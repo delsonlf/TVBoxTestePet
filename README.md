@@ -14,10 +14,10 @@ Neste repositório, concentramos nossos esforços na **descaracterização de TV
 
 Atualmente, nossas principais linhas de pesquisa relacionadas a esse projeto incluem:
 
-- 🖥️**Cluster**: aproveitamento de TV Box para construção de clusters de processamento, permitindo executar aplicações distribuídas de forma eficiente e acessível.
+- 🖥️[Cluster](Cluster/README.md): aproveitamento de TV Box para construção de clusters de processamento, permitindo executar aplicações distribuídas de forma eficiente e acessível.
 
 - 🔓[DESCARACTERIZAÇAO](Descaracterização/README.md)
 : processos de desmontagem, análise e adaptação do hardware das TV Box, com foco em documentar etapas, desafios e soluções encontradas.
 
-- 📡**Gateway**: utilização de TV Box como gateways para Internet das Coisas (IoT), viabilizando experimentos de conectividade e integração de dispositivos.
+- 📡[Gateway](Gateway/README.md): utilização de TV Box como gateways para Internet das Coisas (IoT), viabilizando experimentos de conectividade e integração de dispositivos.
 
