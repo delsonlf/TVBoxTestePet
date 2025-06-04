@@ -16,7 +16,8 @@ Atualmente, nossas principais linhas de pesquisa relacionadas a esse projeto inc
 
 - 🖥️**Cluster**: aproveitamento de TV Box para construção de clusters de processamento, permitindo executar aplicações distribuídas de forma eficiente e acessível.
 
-- 🔓**Descaracterização**: processos de desmontagem, análise e adaptação do hardware das TV Box, com foco em documentar etapas, desafios e soluções encontradas.
+- 🔓[DESCARACTERIZAÇAO](Descaracterização/README.md)
+: processos de desmontagem, análise e adaptação do hardware das TV Box, com foco em documentar etapas, desafios e soluções encontradas.
 
 - 📡**Gateway**: utilização de TV Box como gateways para Internet das Coisas (IoT), viabilizando experimentos de conectividade e integração de dispositivos.
 
