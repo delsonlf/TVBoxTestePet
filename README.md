@@ -20,5 +20,3 @@ Atualmente, nossas principais linhas de pesquisa relacionadas a esse projeto inc
 
 - 📡**Gateway**: utilização de TV Box como gateways para Internet das Coisas (IoT), viabilizando experimentos de conectividade e integração de dispositivos.
 
----
-
