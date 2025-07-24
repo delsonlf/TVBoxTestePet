@@ -1,4 +1,8 @@
-# 1. Instalar o virtual box e criar as VMs (máquinas virtuais)
+# Cluster
+## Sumário
+  [teste](##Instalando-o-PBS-nos-ComputeNodes)
+
+## 1. Instalar o virtual box
 Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o ubunto-server-24.04.02 LTS, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
 Um passo muito importante quando se cria uma VM no virtual Box é a escolha da sua configuração de rede. Há várias configurações disponíveis, mas a escolhida e a  “Rede Brigde”.
 
@@ -6,7 +10,7 @@ Para configurar a rede clique na máquina virtual e acesse:
 ```
 Configurações  >  Redes  >  Adaptador 1  >  conectado a : Rede Brigde
 ```
-# 2.	Configurando IPs
+## 2.	Configurando IPs
 A comunicação entre os nós acontece a partir do protocolo SSH, que utiliza IPs para comunicação. Normalmente o IP muda a cada login em uma rede devido ao protocolo DHCP, mas para criar um cluster esses IPs não podem mudar. Para deixar o IP estático, desligando o DHCP e configurando o IP manualmente, siga os passos abaixo. 
 ```
 sudo nano /etc/netplan/50-installer-config.yaml
@@ -33,7 +37,7 @@ Depois aplique a configuração e verifique o IP com os comandos abaixo:
 sudo netplan apply
 ip a
 ```
-# 3.	Anotando os IPs 
+## 3.	Anotando os IPs 
 Para os passos posteriores será necessário conhecer os endereços IPs de todas as máquinas virtuais. Para descobrir qual o IP da sua máquina atual use o comando abaixo:
 ```
 ip a
@@ -53,7 +57,7 @@ Para sair aperte `ctrl + X`.
 
 **OBS: Os hostnames no arquivo do Head Node devem ser os mesmos dos Compute Nodes. Verifique com `hostname` no terminal e caso necessário use `sudo hostnamectl set-hostname novo-hostname` para definir um hostname permanente.**
 
-# 4.	Atualize o Ubunto das VMs
+## 4.	Atualize o Ubunto das VMs
 Mesmo baixando a imagem de instalação mais atualizada, ela não possui todas as atualizações de segurança. Então é recomendado sempre atualizar a máquina após a sua criação.
 Use os comandos:
 ```
@@ -65,7 +69,7 @@ E depois reinicie as VMs com:
 ```
 sudo reboot
 ```
-# 5.	Configurando a comunição via SSH
+## 5.	Configurando a comunição via SSH
 `SSH` é um protocolo de rede que permite acesso remoto seguro a computadores e servidores e é por ele que os nós vão se comunicar. Mas antes precisa baixá-lo, baixe em todos os nós.
 ```
 sudo apt install -y openssh-server
@@ -78,7 +82,7 @@ Com a chave criada compartilhe com os `Compute Nodes`.
 ```
 ssh-copy-id usuarioDoNo@ipDoNoDeComputação
 ```
-# 6.	Configurando a pasta compartilhada
+## 6.	Configurando a pasta compartilhada
 O NFS é um protocolo que permite o compartilhamento de arquivos e diretórios em uma rede. Crie uma pasta compartilhada no Head Node e dê acesso aos Compute Node. É por meio dessa pasta que vamos configurar o PBS e executar os Jobs(trabalhos).
 Instale no Head Node o NFS server:
 ```
@@ -132,7 +136,7 @@ Adicione a linha abaixo no arquivo usando o IP do Head Node.
 ```
 x.x.x.x:/mnt/nfs	/mnt/nfs	nfs	rw	0	0 
 ```
-# 7.	Instalando Pacotes
+## 7.	Instalando Pacotes
 Antes de instalar o PBS, é necessário instalar vários pacotes como compiladores, bibliotecas e softwares que o PBS precisa para compilar e rodar. Instale esses pacotes no Head Node e em todos os Compute Nodes.
 ```
 sudo apt install -y gcc make libtool libhwloc-dev libx11-dev \
@@ -193,7 +197,7 @@ Execute o chmod abaixo para configurar permissões e só então inicie o PBS.
 sudo chmod 4755 /opt/pbs/sbin/pbs_iff /opt/pbs/sbin/pbs_rcp
 sudo /etc/init.d/pbs start
 ```
-# 9.	Instalando o PBS nos ComputeNodes
+## 9.	Instalando o PBS nos ComputeNodes
 Com o PBS já instalado no Head Node usando o código fonte presente na pasta compartilhada, o processo de instalação nos outros nós será menor.
 Rode os comandos abaixo para instalar o PBS.
 ```
@@ -224,7 +228,7 @@ Execute o `chmod` abaixo para configurar permissões e depois inicie o PBS.
 sudo chmod 4755 /opt/pbs/sbin/pbs_iff /opt/pbs/sbin/pbs_rcp 
 sudo /etc/init.d/pbs start
 ```
-# 10.	Criando Filas
+## 10.	Criando Filas
 O PBS é um gerenciador de filas, com o PBS instalado em todos os nós crie as filas para execução dos trabalhos.
 Crie uma fila e a defina como padrão.
 ```
