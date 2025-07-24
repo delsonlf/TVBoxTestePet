@@ -173,10 +173,11 @@ Finalize a instalação.
 ```
 sudo /opt/pbs/libexec/pbs_postinstall
 ```
-Com o PBS instalado agora só falta configurar o arquivo de configuração principal. Entre no arquivo pbs.conf e modifique-o como no exemplo abaixo.
-sudo nano /etc/pbs.conf
+Com o PBS instalado agora só falta configurar o arquivo de configuração principal. Entre no arquivo `pbs.conf` e modifique-o como no exemplo abaixo.
+`sudo nano /etc/pbs.conf`
 
 Exemplo:
+```
 PBS_SERVER=admin (Troque o ‘admin’ pelo hostname do Head Node no /etc/hosts)  
 PBS_START_SERVER=1 
 PBS_START_SCHED=1 
@@ -186,8 +187,59 @@ PBS_EXEC=/opt/pbs
 PBS_HOME=/var/spool/pbs 
 PBS_CORE_LIMIT=unlimited 
 PBS_SCP=/usr/bin/scp
-
+```
 Execute o chmod abaixo para configurar permissões e só então inicie o PBS.
+```
 sudo chmod 4755 /opt/pbs/sbin/pbs_iff /opt/pbs/sbin/pbs_rcp
 sudo /etc/init.d/pbs start
+```
+# 9.	Instalando o PBS nos ComputeNodes
+Com o PBS já instalado no Head Node usando o código fonte presente na pasta compartilhada, o processo de instalação nos outros nós será menor.
+Rode os comandos abaixo para instalar o PBS.
+```
+cd /mnt/nfs/openpbs
+sudo make install 
+sudo /opt/pbs/libexec/pbs_postinstall
+```
+**OBS: Talvez seja necessário criar a pasta pbs (`sudo mkdir /opt/pbs`) e dar permissão para modificada-la (`sudo chmod -R 777 /opt/pbs`).**
 
+Entre no arquivo de configuração do PBS e reproduza a configuração do exemplo abaixo.
+`sudo nano /etc/pbs.conf`
+
+
+
+Exemplo:
+```
+PBS_SERVER=admin (Troque o ‘admin’ pelo nome do Head Node no /etc/hosts) PBS_START_SERVER=0 
+PBS_START_SCHED=0 
+PBS_START_COMM=0 
+PBS_START_MOM=1 
+PBS_EXEC=/opt/pbs 
+PBS_HOME=/var/spool/pbs 
+PBS_CORE_LIMIT=unlimited 
+PBS_SCP=/usr/bin/scp 
+```
+Execute o `chmod` abaixo para configurar permissões e depois inicie o PBS.
+```
+sudo chmod 4755 /opt/pbs/sbin/pbs_iff /opt/pbs/sbin/pbs_rcp 
+sudo /etc/init.d/pbs start
+```
+# 10.	Criando Filas
+O PBS é um gerenciador de filas, com o PBS instalado em todos os nós crie as filas para execução dos trabalhos.
+Crie uma fila e a defina como padrão.
+```
+sudo /opt/pbs/bin/qmgr -c "create queue dev queue_type=e, started=t, enabled=t "
+sudo /opt/pbs/bin/qmgr -c "set server default_queue=dev "
+```
+
+Habilite historico de trabalho e habilite o modo flta UID.
+```
+sudo /opt/pbs/bin/qmgr -c "set server job_history_enable=true " 
+sudo /opt/pbs/bin/qmgr -c "set server flatuid=true"
+```
+Com as filas criadas adicione os Compute Nodes usando os seus respectivos hostnames presentes no arquivo `/etc/hosts do Head Node`.
+```
+sudo /opt/pbs/bin/qmgr -c "create node nomeDoNos"
+```
+Verifique se os nós estão disponíveis com: 
+`pbsnodes -a`
