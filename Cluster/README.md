@@ -1,15 +1,15 @@
 # Cluster
 ## Sumário
-1. [Instalar o virtual box e criar as VMs (máquinas virtuais)](#1-instalar-o-virtual-box-e-criar-as-vms-(maquinas-virtuais))
+1. [Instalar o virtual box e criar as VMs (máquinas virtuais)](#1-instalar-o-virtual-box-e-criar-as-vms-maquinas-virtuais)
 2. [Configurando IPS](#2-configurando-ips)
-3. [Anotando os IPs](#3-anotando-os-ips)
-4. [Atualize o Ubunto das VMs](#4-atualize-o-ubunto-das-vms)
-5. [Configurando a comunicação via SSH](#5-configurando-a-comunicaçao-via-ssh)
-6. [Configurando a pasta compartilhada](#6-configurando-a-pasta-compartilhada)
-7. [Instalando Pacotes](#7-instalando-pacotes)
-8. [Instalando o PBS no HeadNode](#8-instalando-o-pbs-no-headnote)
-9. [Instalando o PBS nos ComputeNodes](#9-instalando-o-pbs-no-computenodes)
-10. [Criando Filas](#10-criando-filas)
+3. [Anotando os IPs](#3anotando-os-ips)
+4. [Atualize o Ubunto das VMs](#4atualize-o-ubunto-das-vms)
+5. [Configurando a comunicação via SSH](#5configurando-a-comunicaçao-via-ssh)
+6. [Configurando a pasta compartilhada](#6configurando-a-pasta-compartilhada)
+7. [Instalando Pacotes](#7instalando-pacotes)
+8. [Instalando o PBS no HeadNode](#8instalando-o-pbs-no-headnote)
+9. [Instalando o PBS nos ComputeNodes](#9instalando-o-pbs-no-computenodes)
+10. [Criando Filas](#10criando-filas)
 
 ## 1. Instalar o virtual box e criar as VMs (máquinas virtuais)
 Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o ubunto-server-24.04.02 LTS, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
