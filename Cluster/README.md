@@ -1,6 +1,6 @@
 # Cluster
 ## Sumário
-  [teste](##Instalando-o-virtual-box)
+  [teste](##configurando-ips)
 
 ## Instalar o virtual box
 Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o ubunto-server-24.04.02 LTS, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
@@ -10,7 +10,7 @@ Para configurar a rede clique na máquina virtual e acesse:
 ```
 Configurações  >  Redes  >  Adaptador 1  >  conectado a : Rede Brigde
 ```
-## 2.	Configurando IPs
+## Configurando IPs
 A comunicação entre os nós acontece a partir do protocolo SSH, que utiliza IPs para comunicação. Normalmente o IP muda a cada login em uma rede devido ao protocolo DHCP, mas para criar um cluster esses IPs não podem mudar. Para deixar o IP estático, desligando o DHCP e configurando o IP manualmente, siga os passos abaixo. 
 ```
 sudo nano /etc/netplan/50-installer-config.yaml
