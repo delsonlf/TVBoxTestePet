@@ -1,8 +1,17 @@
 # Cluster
 ## Sumário
-  [teste](#configurando-ips)
+1. [Instalar o virtual box e criar as VMs (máquinas virtuais)](#1-instalar-o-virtual-box-e-criar-as-vms-(maquinas-virtuais))
+2. [Configurando IPS](#2-configurando-ips)
+3. [Anotando os IPs](#3-anotando-os-ips)
+4. [Atualize o Ubunto das VMs](#4-atualize-o-ubunto-das-vms)
+5. [Configurando a comunicação via SSH](#5-configurando-a-comunicaçao-via-ssh)
+6. [Configurando a pasta compartilhada](#6-configurando-a-pasta-compartilhada)
+7. [Instalando Pacotes](#7-instalando-pacotes)
+8. [Instalando o PBS no HeadNode](#8-instalando-o-pbs-no-headnote)
+9. [Instalando o PBS nos ComputeNodes](#9-instalando-o-pbs-no-computenodes)
+10. [Criando Filas](#10-criando-filas)
 
-## Instalar o virtual box
+## 1. Instalar o virtual box e criar as VMs (máquinas virtuais)
 Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o ubunto-server-24.04.02 LTS, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
 Um passo muito importante quando se cria uma VM no virtual Box é a escolha da sua configuração de rede. Há várias configurações disponíveis, mas a escolhida e a  “Rede Brigde”.
 
@@ -69,7 +78,7 @@ E depois reinicie as VMs com:
 ```
 sudo reboot
 ```
-## 5.	Configurando a comunição via SSH
+## 5.	Configurando a comunicação via SSH
 `SSH` é um protocolo de rede que permite acesso remoto seguro a computadores e servidores e é por ele que os nós vão se comunicar. Mas antes precisa baixá-lo, baixe em todos os nós.
 ```
 sudo apt install -y openssh-server
@@ -151,7 +160,8 @@ sudo apt install -y expat libedit2 postgresql python3 postgresql-contrib sendmai
 sudo tcl tk libical3t64 postgresql-server-dev-all
 ```
 **OBS: É comum que o nome de alguns pacotes mude, o que pode fazer os comandos acima mostrarem erro. Caso ocorra algum erro acesse o GITHUB do PBS [clicando aqui](https://github.com/openpbs/openpbs/blob/master/INSTALL).**  
-# 8.	Instalando o PBS no HeadNode
+
+## 8.	Instalando o PBS no HeadNode
 O PBS (Portable Batch System) é um sistema de gerenciamento de tarefas que permite aos usuários submeterem e gerenciar trabalhos em um ambiente de computação distribuída. No Head Node siga os passos abaixo:  
 Baixe o git.
  ```
