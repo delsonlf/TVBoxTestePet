@@ -10,7 +10,7 @@ Para configurar a rede clique na máquina virtual e acesse:
 ```
 Configurações  >  Redes  >  Adaptador 1  >  conectado a : Rede Brigde
 ```
-## Configurando IPs
+## 2. Configurando IPs
 A comunicação entre os nós acontece a partir do protocolo SSH, que utiliza IPs para comunicação. Normalmente o IP muda a cada login em uma rede devido ao protocolo DHCP, mas para criar um cluster esses IPs não podem mudar. Para deixar o IP estático, desligando o DHCP e configurando o IP manualmente, siga os passos abaixo. 
 ```
 sudo nano /etc/netplan/50-installer-config.yaml
