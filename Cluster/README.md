@@ -12,7 +12,7 @@
 10. [Criando Filas](#10criando-filas)
 
 ## 1. Instalar o virtual box e criar as VMs (máquinas virtuais)
-Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o ubunto-server-24.04.02 LTS, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
+Para baixar o virtual box acesse o site official pelo [link](https://www.virtualbox.org/). Para as máquinas virtuais foi usado o `ubunto-server-24.04.02 LTS`, baixe a imagem de instalação no site official [clicando aqui](https://ubuntu.com/download/server) e crie as máquinas virtuais. Aqui foram usadas 3 máquinas virtuais, uma para o `Head Node` e outras duas para os `Compute Nodes`. 
 Um passo muito importante quando se cria uma VM no virtual Box é a escolha da sua configuração de rede. Há várias configurações disponíveis, mas a escolhida e a  “Rede Brigde”.
 
 Para configurar a rede clique na máquina virtual e acesse:
